@@ -24,6 +24,16 @@ RUN apk add --update --no-cache --virtual deps gcc zlib-dev jpeg-dev python3-dev
     && cat /tmp/*.conf >> /home/weewx/weewx.conf \
     && rm -rf /tmp/*.conf \
     && sed -i -e s:unspecified:Simulator: /home/weewx/weewx.conf
+
+VOLUME ["/data"]
+
+RUN mkdir -p /data \
+  && cp -r * /data
+
+ENV PATH="/opt/venv/bin:$PATH"
+
+
+
 CMD ["/home/weewx/bin/weewxd", "/home/weewx/weewx.conf"]
 
 #wget http://www.weewx.com/downloads/released_versions/weewx-4.9.1.tar.gz -O /tmp/weewx.tgz \
