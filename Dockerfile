@@ -27,7 +27,8 @@ RUN apk add --update --no-cache --virtual deps gcc zlib-dev jpeg-dev python3-dev
 
 VOLUME ["/data"]
 
-RUN mkdir -p /data \
+RUN cd /home/weewx \
+  && mkdir -p /data \
   && cp -r * /data
 
 ENV PATH="/opt/venv/bin:$PATH"
