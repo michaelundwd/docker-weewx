@@ -14,13 +14,13 @@ FROM python:3.10.4-slim-bullseye as weewx_os_base
 LABEL maintainer="doug@dougjenkins.com"
 LABEL org.opencontainers.image.authors="doug@dougjenkins,com"
 LABEL org.opencontainers.image.url="largoweather.com"
-LABEL org.opencontainers.image.version="4.8.0"
+LABEL org.opencontainers.image.version="4.10.1"
 LABEL org.opencontainers.image.title="WeeWX Docker Image"
 LABEL org.opencontainers.image.source="https://github.com/ddjlabs/largoweather_weewx_setup"
 
 #Environmental Variables
 ENV TZ=America/New_York
-ENV WEEWX_VERSION="4.8.0"
+ENV WEEWX_VERSION="4.10.1"
 
 # BelcherTown Skin Tag: This is referencing a custom release at github.com/ddjlabs/weewx-belchertown project
 ENV BELCHERTOWN_SKIN_TAG="lw-belchertown-1.4"
