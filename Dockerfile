@@ -131,12 +131,12 @@ FROM weewx_extensions
 WORKDIR /home/weewx
 
 #Copy All image assets that are associated with LargoWeather.com to the Belchertown Images folder.
-COPY ${PWD}/skin-assets/* /home/weewx/skins/Belchertown/images
+# removed by mju COPY ${PWD}/skin-assets/* /home/weewx/skins/Belchertown/images
 
 #Copy the WeeWX.conf file as a template just in case we need to reference it after the container is built.
-RUN cd /home/weewx && \
-    cp /home/weewx/weewx.conf /home/weewx/weewx.conf.template && \
-    rm /home/weewx/weewx.conf
+# removed by mju RUN cd /home/weewx && \
+#   cp /home/weewx/weewx.conf /home/weewx/weewx.conf.template && \
+#    rm /home/weewx/weewx.conf
 
 #Copy the Docker Project's weewx config files to the config folder.
 # COPY ${PWD}/weewx.conf /home/weewx/config    
