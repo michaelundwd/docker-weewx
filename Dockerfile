@@ -14,7 +14,7 @@ ADD dist/weewx-$WEEWX_VERSION /tmp/weewx/
 COPY conf-fragments/ /tmp/
 RUN apk add --no-cache python3 wheel\
     && apk add --update --no-cache --virtual deps gcc zlib-dev jpeg-dev python3-dev build-base linux-headers freetype-dev py3-pip alpine-conf \
-    && apk add --no-cache python3 py3-pyserial py3-usb py3-pymysql sqlite wget rsync openssh tzdata wheel\
+    && apk add --no-cache python3 py3-pyserial py3-usb py3-pymysql sqlite wget rsync openssh tzdata \
     && ln -sf python3 /usr/bin/python \
     && pip3 install --no-cache --upgrade Cheetah3 Pillow image pyephem setuptools requests dnspython paho-mqtt configobj \
     && cd /tmp/weewx \
