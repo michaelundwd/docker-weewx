@@ -33,7 +33,7 @@ WORKDIR /home/weewx
 
 # --- Install Interceptor Driver ---
 RUN cd /tmp && \
-    wget -O weewx-interceptor.zip https://github.com/matthewwall/weewx-interceptor/archive/master.zip \
+    wget -O weewx-interceptor.zip https://github.com/matthewwall/weewx-interceptor/archive/master.zip && \
     /home/weewx/bin/wee_extension --install=/tmp/weewx-interceptor.zip && \
     rm -rf /tmp/weewx-interceptor.zip
 
