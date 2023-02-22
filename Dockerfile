@@ -4,7 +4,7 @@ MAINTAINER Tom Mitchell "tom@tom.org"
 
 ENV WEEWX_VERSION=4.10.0
 ENV HOME=/home/weewx
-ENV TZ=America/New_York
+ENV TZ=Europe/London
 
 #wget http://www.weewx.com/downloads/released_versions/weewx-4.9.1.tar.gz -O /tmp/weewx.tgz \
 #      && cd /tmp && tar zxvf /tmp/weewx*.tgz \
@@ -62,4 +62,4 @@ RUN cd /home/weewx \
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-CMD ["/home/weewx/bin/weewxd", "/home/weewx/weewx.conf"]
+CMD ["/home/weewx/bin/weewxd", "/data/weewx.conf"]
