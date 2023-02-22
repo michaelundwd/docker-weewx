@@ -1,6 +1,6 @@
 FROM alpine:3.17.0
 MAINTAINER Tom Mitchell "tom@tom.org"
-# mods by mju 21/02/2023
+# mods by mju 21/02/2023, extensions 22/02/2023
 
 ENV WEEWX_VERSION=4.10.0
 ENV HOME=/home/weewx
@@ -25,6 +25,32 @@ RUN apk add --update --no-cache --virtual deps gcc zlib-dev jpeg-dev python3-dev
     && cat /tmp/*.conf >> /home/weewx/weewx.conf \
     && rm -rf /tmp/*.conf \
     && sed -i -e s:unspecified:Simulator: /home/weewx/weewx.conf
+
+
+# ==== weewx_extensions stage: This downloads and installs all appropriate WeeWX Extensions =====
+
+WORKDIR /home/weewx
+
+# --- Install Interceptor Driver ---
+RUN cd /tmp && \
+RUN wget -O weewx-interceptor.zip https://github.com/matthewwall/weewx-interceptor/archive/master.zip \
+    /home/weewx/bin/wee_extension --install=/tmp/weewx-interceptor.zip && \
+    rm -rf /tmp/weewx-interceptor.zip
+
+
+# --- Install Belchertown WeeWX Skin (Using a custom Belchertown skin tag Release from ddjlabs/weewx-belchertown project) ---
+RUN cd /tmp && \
+    wget -O /tmp/belchertown-skin.zip https://github.com/ddjlabs/weewx-belchertown/archive/refs/tags/$BELCHERTOWN_SKIN_TAG.zip && \
+    /home/weewx/bin/wee_extension --install=/tmp/belchertown-skin.zip && \
+    rm -rf /tmp/belchertown-skin.zip
+
+
+# --- Install MQTT Driver for real time updates for Belchertown ---
+RUN cd /tmp && \
+    wget -O /tmp/weewx-mqtt.zip https://github.com/matthewwall/weewx-mqtt/archive/master.zip && \
+    /home/weewx/bin/wee_extension --install=/tmp/weewx-mqtt.zip && \
+    rm -rf /tmp/weewx-mqtt.zip
+
 
 # mju enhancements here to enable mount of /data externally
 
