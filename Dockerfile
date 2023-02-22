@@ -40,7 +40,7 @@ RUN cd /tmp && \
 
 # --- Install Belchertown WeeWX Skin (Using a custom Belchertown skin tag Release from ddjlabs/weewx-belchertown project) ---
 RUN cd /tmp && \
-    wget -O /tmp/belchertown-skin.zip https://github.com/ddjlabs/weewx-belchertown/archive/refs/tags/$BELCHERTOWN_SKIN_TAG.zip && \
+    wget -O /tmp/belchertown-skin.zip https://github.com/poblabs/weewx-belchertown/archive/refs/heads/master.zip && \
     /home/weewx/bin/wee_extension --install=/tmp/belchertown-skin.zip && \
     rm -rf /tmp/belchertown-skin.zip
 
